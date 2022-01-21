@@ -87,3 +87,83 @@ nai.addEventListener('click' , function(){
 
     add_box.style.display='none';
 });
+
+
+
+
+
+
+
+
+
+
+
+
+const age_counter = document.getElementById('age_counter');
+const counterr = document.querySelector('.counterr');
+
+
+
+
+
+age_counter.addEventListener('submit' , function(e){
+
+e.preventDefault();
+
+
+
+let datee =this.querySelector('input[type="date"]').value;
+let timee =this.querySelector('input[type="time"]').value;
+
+
+
+
+ 
+setInterval(() =>{
+
+
+    let start_timee = new Date();
+    let end_timee = new Date(datee +' ' + timee);
+
+
+
+    let timee_diff = Math.floor(Math.abs( start_timee.getTime() - end_timee.getTime()));
+
+
+    let totall_sec = Math.floor(timee_diff / 1000);
+    let totall_min = Math.floor(totall_sec / 60);
+    let totall_hours = Math.floor(totall_min / 60);
+    let totall_day = Math.floor(totall_hours / 24);
+    let totall_month = Math.floor(totall_day / 30);
+    let totall_years = Math.floor(totall_month / 12);
+
+
+let monthA = totall_month - (totall_years * 12);
+let dayA = totall_day - (totall_years * 12 * 30) - (monthA * 30);
+let hoursA = totall_hours - (totall_years * 12 * 30 * 24 ) - ( monthA * 30 * 24) - (dayA * 24);
+let minA = totall_min - (totall_years * 12 * 30 * 24 * 60 ) - ( monthA * 30 * 24 * 60) - (dayA * 24 * 60) - (hoursA * 60);
+let secA = totall_sec - (totall_years * 12 * 30 * 24 * 60 * 60 ) - ( monthA * 30 * 24 * 60 * 60 ) - (dayA * 24 * 60 * 60) - (hoursA * 60 * 60) - (minA * 60); 
+
+
+
+
+
+
+
+
+
+
+
+
+counterr.innerHTML = `Yeaes: ${totall_years} Month : ${monthA} Day :${dayA > 9 ? dayA : '0'+dayA} Hours : ${hoursA > 9 ? hoursA : '0'+hoursA} Min : ${minA > 9 ? minA : '0'+minA } Sec : ${secA > 9 ? secA : '0'+secA}`
+
+
+
+
+}, 1000 );
+
+
+
+
+
+})
